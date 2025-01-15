@@ -14,6 +14,7 @@
     "appium": "^2.15.0",
     "appium-ocr-plugin": "^0.2.2",
     "appium-uiautomator2-driver": "^3.9.8",
+    "appium-xcuitest-driver": "^7.35.1",
     "wdio-html-nice-reporter": "^8.1.7",
     "wdio-mochawesome-reporter": "^6.1.1"
   },

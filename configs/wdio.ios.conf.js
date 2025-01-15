@@ -22,8 +22,9 @@ export const config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        './test/specs/ios/**/*.js'
+        '../test/specs/ios/**/*.js'
     ],
+    
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
@@ -52,11 +53,12 @@ export const config = {
     //
     capabilities: [{
         // capabilities for local Appium web tests on an Android Emulator
-        platformName: 'Android',
-        browserName: 'Chrome',
-        'appium:deviceName': 'Android GoogleAPI Emulator',
-        'appium:platformVersion': '12.0',
-        'appium:automationName': 'UiAutomator2'
+        platformName: 'iOS',
+        'appium:bundleId': 'com.synchronoss.iosiapsdk',
+        'appium:udid': '646e5064b7efb985d5d033a4b7569cce2b389f33',
+        'appium:platformVersion': '16.7',
+        'appium:automationName': 'XCUITest',
+        "appium:usePrebuiltWDA": true
     }],
 
     //

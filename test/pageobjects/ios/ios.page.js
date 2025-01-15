@@ -41,8 +41,13 @@ class IOSPage {
         await this.monthlyTab.click();
         await this.unselectedPlanIndicator.click();
         await this.continueBtn.click();
+
+        browser.sleep(3000);
+
         
     }
+
+    
     
     
     
