@@ -18,8 +18,8 @@
     "wdio-mochawesome-reporter": "^6.1.1"
   },
   "scripts": {
-    "wdio-android": "wdio run ./wdio.android.conf.js",
-    "wdio-ios": "wdio run ./wdio.ios.conf.js",
-    "wdio-web": "wdio run ./wdio.web.conf.js"
+    "wdio-android": "wdio run configs/wdio.android.conf.js",
+    "wdio-ios": "wdio run configs/wdio.ios.conf.js",
+    "wdio-web": "wdio run configs/wdio.web.conf.js"
   }
 }
