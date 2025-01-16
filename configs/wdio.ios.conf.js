@@ -58,7 +58,10 @@ export const config = {
         'appium:udid': '646e5064b7efb985d5d033a4b7569cce2b389f33',
         'appium:platformVersion': '16.7',
         'appium:automationName': 'XCUITest',
-        "appium:usePrebuiltWDA": true
+        'appium:noReset': false,
+        'appium:': true,
+        
+
     }],
 
     //

@@ -15,8 +15,16 @@ class IOSPage {
         return $('~Yearly');
     }
 
-    get unselectedPlanIndicator() {
-        return $('~Unselected Plan Indicator');
+    get continueBtn() {
+        return $('~Continue');
+    }
+
+    get currentSubscription() {
+        return $('~Current Subscription');
+    }
+
+    get firstPlanFromTab() {
+        return $('-ios class chain:**/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther');
     }
 
     get continueBtn() {
@@ -26,23 +34,24 @@ class IOSPage {
 
 
 
-
-
-   
-
-
-
     async selectPlan() {
         await this.testerBtn.click();
         await this.subscriptionsButton.click();
 
-        browser.sleep(3000);
+        await driver.pause(3000);
         
         await this.monthlyTab.click();
-        await this.unselectedPlanIndicator.click();
+        if (await this.currentSubscription.isDisplayed()) {
+            await this.yearlyTab.click();
+            await this.firstPlanFromTab.click();
+        } else {
+            await this.firstPlanFromTab.click();
+        }
         await this.continueBtn.click();
 
-        browser.sleep(3000);
+        await driver.pause(3000);
+
+
 
         
     }
