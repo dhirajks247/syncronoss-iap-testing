@@ -1,4 +1,38 @@
+import path from 'path';
+import fs from 'fs';
+import { execSync } from 'child_process';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 export const config = {
+
+    // /**
+    //  * Hook executed once before all workers get launched.
+    //  * @param {object} config wdio configuration object
+    //  * @param {Array.<Object>} capabilities list of capabilities details
+    //  */
+    // onPrepare: function (config, capabilities) {
+    //     console.log('Installing WebDriverAgent.app...');
+        
+    //     const wdaAppPath = path.resolve(__dirname, '../resources/WDA.app');
+    //     const udid = capabilities[0]['appium:udid']; // Ensure the UDID is fetched correctly
+    //     const command = `ios-deploy --bundle ${wdaAppPath} --justlaunch`;
+
+    //     try {
+    //         execSync(command, { stdio: 'inherit' });
+    //         console.log('WebDriverAgent.app installed successfully.');
+    //     } catch (error) {
+    //         console.error('Failed to install WebDriverAgent.app:', error);
+    //         throw new Error('Unable to install WebDriverAgent.app');
+    //     }
+    // },
+
     //
     // ====================
     // Runner Configuration
@@ -52,14 +86,13 @@ export const config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        // capabilities for local Appium web tests on an Android Emulator
+        // capabilities for local Appium web tests on an iOS Emulator
         platformName: 'iOS',
-        'appium:bundleId': 'com.synchronoss.iosiapsdk',
+        'appium:bundleId': process.env.IOS_APP_BUNDLE_ID,
         'appium:udid': '646e5064b7efb985d5d033a4b7569cce2b389f33',
-        'appium:platformVersion': '16.7',
+        // 'appium:platformVersion': '16.7',
         'appium:automationName': 'XCUITest',
         'appium:noReset': false,
-        'appium:': true,
         
 
     }],
@@ -111,7 +144,18 @@ export const config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['appium'],
+    services:  [
+        // your other services 
+        ['appium'],
+        [
+          'ocr',
+          {
+            // The OCR options
+            ocrImagesPath: 'ocr-images/',
+            ocrLanguage: 'eng'
+          },
+        ]
+      ],
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -134,7 +178,7 @@ export const config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['junit',['allure', {outputDir: 'allure-results'}]],
+    reporters: [['allure', {outputDir: 'allure-results'}]],
 
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/

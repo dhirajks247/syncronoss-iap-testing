@@ -53,11 +53,11 @@ export const config = {
     capabilities: [{
         // capabilities for local Appium web tests on an Android Emulator
         platformName: 'Android',
-        'appium:deviceName': 'RZ8R21FX44B',
+        'appium:deviceName': process.env.ANDROID_DEVICE,
         'appium:platformVersion': '12.0',
         'appium:automationName': 'UiAutomator2',
-        'appium:appPackage': 'com.geekyants.synchronoss',
-        'appium:appActivity': '.MainActivity',
+        'appium:appPackage': process.env.ANDROID_APP_PACKAGE,
+        'appium:appActivity': process.env.ANDROID_APP_ACTIVITY,
         'appium:noReset': false,
     }],
 
@@ -131,7 +131,7 @@ export const config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['junit',['allure', {outputDir: 'allure-results'}]],
+    reporters: [['allure', {outputDir: 'allure-results'}]],
 
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/

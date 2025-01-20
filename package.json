@@ -15,12 +15,17 @@
     "appium-ocr-plugin": "^0.2.2",
     "appium-uiautomator2-driver": "^3.9.8",
     "appium-xcuitest-driver": "^7.35.1",
+    "tesseract.js": "^6.0.0",
     "wdio-html-nice-reporter": "^8.1.7",
-    "wdio-mochawesome-reporter": "^6.1.1"
+    "wdio-mochawesome-reporter": "^6.1.1",
+    "wdio-ocr-service": "^1.1.3"
   },
   "scripts": {
     "wdio-android": "wdio run configs/wdio.android.conf.js",
     "wdio-ios": "wdio run configs/wdio.ios.conf.js",
     "wdio-web": "wdio run configs/wdio.web.conf.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
   }
 }
