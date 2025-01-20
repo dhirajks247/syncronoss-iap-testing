@@ -55,9 +55,12 @@ class IOSPage {
         await driver.pause(3000);
         
         await this.selectSubscriptionType();
+        await this.continueBtn.waitForEnabled({
+            timeout: 10000,
+            timeoutMsg: 'Continue button not enabled within ' + 10000 + 'ms'
+        });
         await this.continueBtn.click();
-        
-        await driver.pause(5000);
+        await driver.pause(7000);
         await this.tapAtRelativePosition(0.5, 0.9);
         
         await this.enterPassword(password);
