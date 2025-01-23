@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "//android.widget.ImageView[@resource-id=\"com.android.vending:id/0_resource_name_obfuscated\"]"
+}

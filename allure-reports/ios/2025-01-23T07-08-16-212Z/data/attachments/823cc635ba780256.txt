@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "(//XCUIElementTypeScrollView/XCUIElementTypeOther/XCUIElementTypeStaticText[not(.//XCUIElementTypeImage[@name='Selected'])])[1]"
+}

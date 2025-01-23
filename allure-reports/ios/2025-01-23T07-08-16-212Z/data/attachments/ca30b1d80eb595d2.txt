@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "//XCUIElementTypeStaticText[starts-with(translate(@name, \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\", \"abcdefghijklmnopqrstuvwxyz\"), \"weekly\") or starts-with(translate(@name, \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\", \"abcdefghijklmnopqrstuvwxyz\"), \"monthly\") or starts-with(translate(@name, \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\", \"abcdefghijklmnopqrstuvwxyz\"), \"yearly\")]"
+}
