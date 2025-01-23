@@ -4,8 +4,8 @@ class IOSPage {
     // Elements
     get testerBtn() { return $('~Tester'); }
     get subscriptionsButton() { return $('~Subscribe to Premium'); }
-    get monthlyTab() { return $('~Monthly'); }
-    get yearlyTab() { return $('~Yearly'); }
+    get monthlyTab() { return $("//XCUIElementTypeButton[@name='Monthly']"); }
+    get yearlyTab() { return $("//XCUIElementTypeButton[@name='Yearly']"); }
     get continueBtn() { return $('~Continue'); }
     
     get selectedIndicator() {
@@ -15,6 +15,9 @@ class IOSPage {
 
     get firstUnselectedPlan() {
         return $("(//XCUIElementTypeScrollView/XCUIElementTypeOther/XCUIElementTypeStaticText[not(.//XCUIElementTypeImage[@name='Selected'])])[1]");
+    }
+    get currentSubscriptionText(){
+        return $("~Current Subscription");
     }
     
     
@@ -35,12 +38,13 @@ class IOSPage {
     }
 
     async selectSubscriptionType() {
-        await this.monthlyTab.click();
-        if (await this.selectedIndicator.isExisting()) {
+        await $("//XCUIElementTypeButton[@name='Yearly']").click();
+        if (await this.currentSubscriptionText.isExisting()) {
             await this.yearlyTab.click();
         }
-        await this.selectFirstUnselectedPlan();
         
+        await expect(this.currentSubscriptionText).not.toBeDisplayed();
+        await this.selectFirstUnselectedPlan();
     }
 
     async tapAtRelativePosition(xRatio, yRatio) {

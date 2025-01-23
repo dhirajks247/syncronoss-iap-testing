@@ -144,6 +144,8 @@ export const config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
+    user: process.env.BROWSERSTACK_USERNAME,
+    key: process.env.BROWSERSTACK_ACCESS_KEY,
     services:  [
         // your other services 
         ['appium'],
@@ -154,7 +156,18 @@ export const config = {
             ocrImagesPath: 'ocr-images/',
             ocrLanguage: 'eng'
           },
-        ]
+        ],
+        
+        // ['browserstack', {
+        //     testObservability: true,
+        //     testObservabilityOptions: {
+        //         projectName: "Your project name goes here",
+        //         buildName: "The static build job name goes here e.g. Nightly regression"
+        //     },
+        //     browserstackLocal: true
+        // }]
+
+       
       ],
 
     // Framework you want to run your specs with.
@@ -178,7 +191,11 @@ export const config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: [['allure', {outputDir: 'allure-results'}]],
+    reporters: [['allure', {
+        outputDir: './allure-results',
+        disableWebdriverStepsReporting: false, // Ensure all steps are reported
+        disableWebdriverScreenshotsReporting: false, // Include screenshots for failed tests
+      }]],
 
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/

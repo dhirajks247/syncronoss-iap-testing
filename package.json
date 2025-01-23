@@ -22,12 +22,13 @@
     "wdio-ocr-service": "^1.1.3"
   },
   "scripts": {
-  "wdio-android": "wdio run configs/wdio.android.conf.js && npm run generate-report android",
-  "wdio-ios": "wdio run configs/wdio.ios.conf.js && npm run generate-report ios",
-  "wdio-web": "wdio run configs/wdio.web.conf.js && npm run generate-report web",
-  "generate-report": "node generate-report.js"
-},
+    "wdio-android": "wdio run configs/wdio.android.conf.js && npm run generate-report android",
+    "wdio-ios": "wdio run configs/wdio.ios.conf.js && npm run generate-report ios",
+    "wdio-web": "wdio run configs/wdio.web.conf.js && npm run generate-report web",
+    "generate-report": "node generate-report.js"
+  },
   "dependencies": {
+    "allure-commandline": "^2.32.0",
     "dotenv": "^16.4.7"
   }
 }
