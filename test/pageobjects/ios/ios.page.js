@@ -3,14 +3,21 @@ import { Key } from 'webdriverio';
 class IOSPage {
     // Elements
     get testerBtn() { return $('~Tester'); }
-    get subscriptionsButton() { return $('~Subscriptions'); }
+    get subscriptionsButton() { return $('~Subscribe to Premium'); }
     get monthlyTab() { return $('~Monthly'); }
     get yearlyTab() { return $('~Yearly'); }
     get continueBtn() { return $('~Continue'); }
-    get currentSubscription() { return $('~Current Subscription'); }
-    get firstPlanFromTab() {
-        return $('-ios class chain:**/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther');
+    
+    get selectedIndicator() {
+        return $('-ios class chain:**/XCUIElementTypeImage[`name == "Selected"`]');
     }
+    
+
+    get firstUnselectedPlan() {
+        return $("(//XCUIElementTypeScrollView/XCUIElementTypeOther/XCUIElementTypeStaticText[not(.//XCUIElementTypeImage[@name='Selected'])])[1]");
+    }
+    
+    
 
     // Actions
     async navigateToSubscriptions() {
@@ -18,14 +25,22 @@ class IOSPage {
         await this.subscriptionsButton.click();
     }
 
+    async selectFirstUnselectedPlan() {
+        if (await this.firstUnselectedPlan.isExisting()) {
+            await this.firstUnselectedPlan.click();
+        } else {
+            console.error('No unselected plan found');
+        }
+
+    }
+
     async selectSubscriptionType() {
         await this.monthlyTab.click();
-        if (await this.currentSubscription.isDisplayed()) {
+        if (await this.selectedIndicator.isExisting()) {
             await this.yearlyTab.click();
-            await this.firstPlanFromTab.click();
-        } else {
-            await this.firstPlanFromTab.click();
         }
+        await this.selectFirstUnselectedPlan();
+        
     }
 
     async tapAtRelativePosition(xRatio, yRatio) {
