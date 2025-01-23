@@ -1,4 +1,0 @@
-{
-  "using": "-android uiautomator",
-  "value": "new UiSelector().text(\"You don't have any active subscriptions\")"
-}

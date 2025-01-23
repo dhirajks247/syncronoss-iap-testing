@@ -1,9 +1,0 @@
-{
-  "processArguments": {
-    "env": {},
-    "args": []
-  },
-  "name": "",
-  "pid": 7754,
-  "bundleId": "com.synchronoss.iosiapsdk"
-}

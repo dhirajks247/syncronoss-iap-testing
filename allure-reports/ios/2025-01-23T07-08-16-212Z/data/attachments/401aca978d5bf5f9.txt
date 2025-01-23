@@ -1,4 +1,0 @@
-{
-  "using": "css selector",
-  "value": "**/XCUIElementTypeStaticText[`name BEGINSWITH[c] \"weekly\" OR name BEGINSWITH[c] \"monthly\" OR name BEGINSWITH[c] \"yearly\"`]"
-}

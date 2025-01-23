@@ -1,4 +1,0 @@
-{
-  "using": "css selector",
-  "value": "**/XCUIElementTypeStaticText[`name BEGINSWITH[c] \"weekly\"`] | **/XCUIElementTypeStaticText[`name BEGINSWITH[c] \"monthly\"`] | **/XCUIElementTypeStaticText[`name BEGINSWITH[c] \"yearly\"`]"
-}
